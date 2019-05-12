@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.7.9
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 21 Mar 2019 pada 09.33
--- Versi Server: 10.1.16-MariaDB
--- PHP Version: 7.0.9
+-- Generation Time: May 12, 2019 at 11:07 AM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 7.2.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -23,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `admin`
+-- Table structure for table `admin`
 --
 
 CREATE TABLE `admin` (
@@ -34,7 +36,7 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `admin`
+-- Dumping data for table `admin`
 --
 
 INSERT INTO `admin` (`id`, `username`, `password`, `updationDate`) VALUES
@@ -43,7 +45,7 @@ INSERT INTO `admin` (`id`, `username`, `password`, `updationDate`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `appointment`
+-- Table structure for table `appointment`
 --
 
 CREATE TABLE `appointment` (
@@ -61,7 +63,7 @@ CREATE TABLE `appointment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `appointment`
+-- Dumping data for table `appointment`
 --
 
 INSERT INTO `appointment` (`id`, `doctorSpecialization`, `doctorId`, `userId`, `consultancyFees`, `appointmentDate`, `appointmentTime`, `postingDate`, `userStatus`, `doctorStatus`, `updationDate`) VALUES
@@ -69,12 +71,13 @@ INSERT INTO `appointment` (`id`, `doctorSpecialization`, `doctorId`, `userId`, `
 (2, 'Homeopath', 4, 5, 700, '2017-01-11', '14:10', '2017-01-07 08:02:58', 0, 1, ''),
 (3, 'Homeopath', 4, 2, 700, '2018-12-25', '3:00 PM', '2018-12-25 07:55:07', 1, 1, ''),
 (4, 'Homeopath', 0, 1, 0, '2019-02-26', '8:45 AM', '2019-02-20 01:34:26', 1, 1, ''),
-(5, 'General Physician', 3, 1, 1200, '2019-03-29', '2:00 PM', '2019-03-13 06:58:43', 1, 1, '');
+(5, 'General Physician', 3, 1, 1200, '2019-03-29', '2:00 PM', '2019-03-13 06:58:43', 1, 1, ''),
+(6, 'dokter gigi', 8, 6, 1000000, '2019-05-24', '4:00 PM', '2019-05-12 08:49:03', 1, 0, '');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `doctors`
+-- Table structure for table `doctors`
 --
 
 CREATE TABLE `doctors` (
@@ -91,7 +94,7 @@ CREATE TABLE `doctors` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `doctors`
+-- Dumping data for table `doctors`
 --
 
 INSERT INTO `doctors` (`id`, `specilization`, `doctorName`, `address`, `docFees`, `contactno`, `docEmail`, `password`, `creationDate`, `updationDate`) VALUES
@@ -101,12 +104,12 @@ INSERT INTO `doctors` (`id`, `specilization`, `doctorName`, `address`, `docFees`
 (4, 'Homeopath', 'Vijay Verma', 'New Delhi', '700', 25668888, 'vijay@gmail.com', 'f925916e2754e5e03f75dd58a5733251', '2017-01-07 07:45:09', ''),
 (5, 'Ayurveda', 'Sanjeev', 'Gurugram', '8050', 442166644646, 'sanjeev@gmail.com', 'f925916e2754e5e03f75dd58a5733251', '2017-01-07 07:47:07', ''),
 (6, 'General Physician', 'Amrita', 'New Delhi India', '2500', 45497964, 'amrita@test.com', 'f925916e2754e5e03f75dd58a5733251', '2017-01-07 07:52:50', ''),
-(7, 'Demo test', 'abc ', 'xyz', '200', 852888888, 'test@demo.com', 'f925916e2754e5e03f75dd58a5733251', '2017-01-07 08:08:58', '');
+(8, 'dokter gigi', 'dr. Rizka Alawiyah', 'cipadung permai 4', '1000000', 82128807750, 'rizkaalawiyah@gmail.com', 'f925916e2754e5e03f75dd58a5733251', '2019-05-12 08:45:45', '');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `doctorslog`
+-- Table structure for table `doctorslog`
 --
 
 CREATE TABLE `doctorslog` (
@@ -120,7 +123,7 @@ CREATE TABLE `doctorslog` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `doctorslog`
+-- Dumping data for table `doctorslog`
 --
 
 INSERT INTO `doctorslog` (`id`, `uid`, `username`, `userip`, `loginTime`, `logout`, `status`) VALUES
@@ -137,12 +140,18 @@ INSERT INTO `doctorslog` (`id`, `uid`, `username`, `userip`, `loginTime`, `logou
 (11, 1, 'anuj.lpu1@gmail.com', 0x3a3a3100000000000000000000000000, '2019-03-13 06:55:56', '13-03-2019 12:29:18 PM', 1),
 (12, 3, 'nitesh@gmail.com', 0x3a3a3100000000000000000000000000, '2019-03-13 06:59:50', '13-03-2019 12:30:43 PM', 1),
 (13, 1, 'anuj.lpu1@gmail.com', 0x3a3a3100000000000000000000000000, '2019-03-13 14:31:15', '13-03-2019 08:01:53 PM', 1),
-(14, 1, 'anuj.lpu1@gmail.com', 0x3a3a3100000000000000000000000000, '2019-03-13 14:42:31', '', 1);
+(14, 1, 'anuj.lpu1@gmail.com', 0x3a3a3100000000000000000000000000, '2019-03-13 14:42:31', '', 1),
+(15, 0, '', 0x3a3a3100000000000000000000000000, '2019-05-12 08:29:41', '', 0),
+(16, 0, '', 0x3a3a3100000000000000000000000000, '2019-05-12 08:29:51', '', 0),
+(17, 0, 'sarita@gmail.com', 0x3a3a3100000000000000000000000000, '2019-05-12 08:33:29', '', 0),
+(18, 2, 'sarita@gmail.com', 0x3a3a3100000000000000000000000000, '2019-05-12 08:33:36', '12-05-2019 02:14:03 PM', 1),
+(19, 8, 'rizkaalawiyah@gmail.com', 0x3a3a3100000000000000000000000000, '2019-05-12 08:48:05', '12-05-2019 02:18:15 PM', 1),
+(20, 8, 'rizkaalawiyah@gmail.com', 0x3a3a3100000000000000000000000000, '2019-05-12 08:49:23', '12-05-2019 02:20:20 PM', 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `doctorspecilization`
+-- Table structure for table `doctorspecilization`
 --
 
 CREATE TABLE `doctorspecilization` (
@@ -153,7 +162,7 @@ CREATE TABLE `doctorspecilization` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `doctorspecilization`
+-- Dumping data for table `doctorspecilization`
 --
 
 INSERT INTO `doctorspecilization` (`id`, `specilization`, `creationDate`, `updationDate`) VALUES
@@ -165,12 +174,13 @@ INSERT INTO `doctorspecilization` (`id`, `specilization`, `creationDate`, `updat
 (6, 'Dentist', '2016-12-28 06:40:08', ''),
 (7, 'Ear-Nose-Throat (Ent) Specialist', '2016-12-28 06:41:18', ''),
 (9, 'Demo test', '2016-12-28 07:37:39', '28-12-2016 01:28:42 PM'),
-(10, 'Bones Specialist demo', '2017-01-07 08:07:53', '07-01-2017 01:38:04 PM');
+(10, 'Bones Specialist demo', '2017-01-07 08:07:53', '07-01-2017 01:38:04 PM'),
+(11, 'dokter gigi', '2019-05-12 08:45:11', '');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `userlog`
+-- Table structure for table `userlog`
 --
 
 CREATE TABLE `userlog` (
@@ -184,7 +194,7 @@ CREATE TABLE `userlog` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `userlog`
+-- Dumping data for table `userlog`
 --
 
 INSERT INTO `userlog` (`id`, `uid`, `username`, `userip`, `loginTime`, `logout`, `status`) VALUES
@@ -206,12 +216,13 @@ INSERT INTO `userlog` (`id`, `uid`, `username`, `userip`, `loginTime`, `logout`,
 (21, 1, 'info@w3gang.com', 0x3a3a3100000000000000000000000000, '2019-03-13 06:57:53', '', 1),
 (22, 0, 'anuj.lpu1@gmail.com', 0x3a3a3100000000000000000000000000, '2019-03-13 09:22:25', '', 0),
 (23, 1, 'info@w3gang.com', 0x3a3a3100000000000000000000000000, '2019-03-13 09:22:38', '', 1),
-(24, 1, 'info@w3gang.com', 0x3a3a3100000000000000000000000000, '2019-03-13 14:42:04', '', 1);
+(24, 1, 'info@w3gang.com', 0x3a3a3100000000000000000000000000, '2019-03-13 14:42:04', '', 1),
+(25, 6, 'rizkaalawiyah88@gmail.com', 0x3a3a3100000000000000000000000000, '2019-05-12 08:48:52', '12-05-2019 02:19:08 PM', 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -227,15 +238,12 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `fullName`, `address`, `city`, `gender`, `email`, `password`, `regDate`, `updationDate`) VALUES
 (1, 'Anuj kumar', 'Test address', 'Aligarh', 'Males', 'info@w3gang.com', 'f925916e2754e5e03f75dd58a5733251', '2016-12-26 07:03:09', '30-12-2016 11:27:47 AM'),
-(2, 'Sarita pandey', 'New Delhi India', 'Delhi', 'female', 'test@gmail.com', 'f925916e2754e5e03f75dd58a5733251', '2016-12-30 05:34:39', ''),
-(3, 'Amit', 'New Delhi', 'New delhi', 'male', 'amit@gmail.com', 'f925916e2754e5e03f75dd58a5733251', '2017-01-07 06:36:53', ''),
-(4, 'Rahul Singh', 'New Delhi', 'New delhi', 'male', 'rahul@gmail.com', 'f925916e2754e5e03f75dd58a5733251', '2017-01-07 07:41:14', ''),
-(5, 'Amit kumar', 'New Delhi India', 'Delhi', 'male', 'amit12@gmail.com', 'f925916e2754e5e03f75dd58a5733251', '2017-01-07 08:00:26', '07-01-2017 01:32:12 PM');
+(6, 'Rizka Alawiyah', 'Purwakarta', 'purwakarta', 'female', 'rizkaalawiyah88@gmail.com', '25d55ad283aa400af464c76d713c07ad', '2019-05-12 08:48:42', '');
 
 --
 -- Indexes for dumped tables
@@ -292,36 +300,44 @@ ALTER TABLE `users`
 --
 ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT for table `doctors`
 --
 ALTER TABLE `doctors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
 --
 -- AUTO_INCREMENT for table `doctorslog`
 --
 ALTER TABLE `doctorslog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
 --
 -- AUTO_INCREMENT for table `doctorspecilization`
 --
 ALTER TABLE `doctorspecilization`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
 --
 -- AUTO_INCREMENT for table `userlog`
 --
 ALTER TABLE `userlog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
